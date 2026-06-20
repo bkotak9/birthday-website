@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>this is my website 🎂</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&family=Special+Elite&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- ambient canvases -->
+<canvas id="particle-canvas"></canvas>
+<canvas id="confetti-canvas"></canvas>
+<canvas id="fireworks-canvas"></canvas>
+
+<!-- fairy-light progress strand (signature element) -->
+<nav class="lights" id="lights" aria-label="Story progress">
+  <div class="lights-wire"></div>
+  <ol class="lights-bulbs" id="lights-bulbs"></ol>
+</nav>
+<div class="lights-mobile" id="lights-mobile"></div>
+
+<main id="story">
+
+  <!-- SCREEN 1 — WELCOME -->
+  <section class="screen paper-bg" id="s1" data-chapter="1" data-label="Welcome">
+    <div class="doodle doodle-heart d-1">♡</div>
+    <div class="doodle doodle-star d-2">✦</div>
+    <div class="screen-inner center">
+      <div class="typewriter-stack">
+        <p class="type-line" data-text="Hey! 👋"></p>
+        <p class="type-line" data-text="Thodi vaar rokai ja..."></p>
+        <p class="type-line" data-text="Aaje kai khas che. 😌"></p>
+      </div>
+      <button class="btn btn-primary reveal-btn" data-next="#s2">
+        <span>Continue</span> <span class="btn-heart">♡</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- SCREEN 2 — VERIFICATION -->
+  <section class="screen paper-bg" id="s2" data-chapter="2" data-label="Verify">
+    <div class="screen-inner center">
+      <div class="card tape-tl tape-br verify-card">
+        <p class="eyebrow typewriter-font">checking the guest list...</p>
+        <h2 class="verify-heading">Quick Verification Required…</h2>
+        <ul class="verify-list" id="verify-list">
+          <li data-delay="300"><span class="check">✅</span> Name: <strong>Madam Ji</strong></li>
+          <li data-delay="900"><span class="check">🍜</span> Favourite Food: <strong>Maggi</strong></li>
+          <li data-delay="1500"><span class="check">🎂</span> Birthday Girl Status: <strong>Confirmed</strong></li>
+          <li data-delay="2100" class="granted"><span class="check">✨</span> <strong>Access Granted</strong></li>
+        </ul>
+        <div class="loader-track"><div class="loader-fill" id="verify-loader"></div></div>
+        <button class="btn btn-primary reveal-btn hidden-btn" id="enter-btn" data-next="#s3">
+          <span>Enter</span> <span class="btn-heart">♡</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 3 — GIFT -->
+  <section class="screen paper-bg" id="s3" data-chapter="3" data-label="The Gift">
+    <div class="screen-inner center">
+      <p class="eyebrow warn">⚠ warning</p>
+      <div class="gift-box" id="gift-box">
+        <div class="gift-lid"></div>
+        <div class="gift-body"></div>
+        <div class="gift-ribbon-v"></div>
+        <div class="gift-ribbon-h"></div>
+        <div class="gift-bow"></div>
+        <div class="gift-glow"></div>
+      </div>
+      <p class="gift-intro">Aa gift ma che:</p>
+      <ul class="gift-list">
+        <li>Thodi birthday magic ✨</li>
+        <li>Thodi masti 😌</li>
+        <li>Thoda jokes 😂</li>
+        <li>Thoda favourite memories 📸</li>
+        <li>Ane ek khubaj special vyakti mate ni surprise 🎁</li>
+      </ul>
+      <button class="btn btn-primary btn-glow" id="open-gift-btn" data-next="#s4">
+        <span>Open Gift 🎁</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- SCREEN 4 — HERO (photo as background) -->
+  <section class="screen hero-screen" id="s4" data-chapter="4" data-label="Hero">
+    <div class="hero-bg" style="background-image:url('{{ url_for('static', filename='images/photo1.jpg') }}')"></div>
+    <div class="hero-overlay"></div>
+    <div class="screen-inner center hero-content">
+      <h1 class="hero-title reveal-up">Happy Birthday<br><span class="script-text">Madam Ji</span> 🎂✨</h1>
+      <p class="hero-line reveal-up delay-1">Out of billions of people,</p>
+      <p class="hero-line reveal-up delay-2">it's funny how some people<br>become important without even trying.</p>
+      <p class="hero-line reveal-up delay-3">Some people become memories.</p>
+      <p class="hero-line reveal-up delay-3">Some become comfort zones.</p>
+      <p class="hero-line emphasis reveal-up delay-4">Madam Ji... You're one of those people. 😊✨</p>
+    </div>
+  </section>
+
+  <!-- SCREEN 5 — EXHIBIT A -->
+  <section class="screen paper-bg" id="s5" data-chapter="5" data-label="Exhibit A">
+    <div class="screen-inner center">
+      <p class="eyebrow">Exhibit A 📸</p>
+      <div class="polaroid rotate-left reveal-up">
+        <img src="{{ url_for('static', filename='images/photo1.jpg') }}" alt="Exhibit A">
+        <p class="polaroid-caption">this one's a problem 😌</p>
+      </div>
+      <p class="exhibit-text reveal-up delay-1">Tari aakh no afini…<br>Tara roop ni bandhani…<br>Manda lidha mohida gori tame… 😌✨</p>
+      <p class="small-caption reveal-up delay-2">Yes. This photo deserved its own section. 😌</p>
+    </div>
+  </section>
+
+  <!-- SCREEN 6 — EXHIBIT B -->
+  <section class="screen paper-bg" id="s6" data-chapter="6" data-label="Exhibit B">
+    <div class="screen-inner center">
+      <p class="eyebrow">Exhibit B 📸</p>
+      <div class="polaroid rotate-right reveal-up">
+        <img src="{{ url_for('static', filename='images/photo2.jpg') }}" alt="Exhibit B">
+        <p class="polaroid-caption">also a problem 😭</p>
+      </div>
+      <p class="exhibit-text reveal-up delay-1">Swarg mathi utareli apsara pan tane joi ne kahe…<br><em>"Bas behen, have ketlu perfect dekhavanu?"</em> 😭😂</p>
+    </div>
+  </section>
+
+  <!-- SCREEN 7 — INVESTIGATION -->
+  <section class="screen paper-bg" id="s7" data-chapter="7" data-label="Verdict">
+    <div class="screen-inner center">
+      <div class="card report-card reveal-up">
+        <p class="eyebrow typewriter-font">⚖ official investigation report</p>
+        <p class="report-sub typewriter-font">case file no. 0608-LD</p>
+        <h3 class="report-heading script-text">Charges</h3>
+        <ul class="report-list">
+          <li>Excessive cuteness</li>
+          <li>Public smile distribution</li>
+          <li>Loko ne impress karvana serious aarop</li>
+          <li>Too memorable</li>
+        </ul>
+        <div class="stamp-wrap">
+          <div class="stamp" id="stamp">100% Guilty 😭😂</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 8 — MYSTERY -->
+  <section class="screen paper-bg" id="s8" data-chapter="8" data-label="Mystery">
+    <div class="screen-inner center">
+      <div class="cute-block">
+        <p class="cute-line reveal-up">There is something I never understood…</p>
+        <p class="cute-line reveal-up delay-1">How can one person be…</p>
+        <div class="trait-row reveal-up delay-2">
+          <span class="trait">cute 😌</span>
+          <span class="trait">funny 😂</span>
+          <span class="trait">sweet 😊</span>
+          <span class="trait">dramatic 😭</span>
+        </div>
+        <p class="cute-line cute-final reveal-up delay-3">all at the same time?<br>Science still can't explain it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 9 — THINGS THAT REMIND ME OF YOU -->
+  <section class="screen paper-bg" id="s9" data-chapter="9" data-label="Reminders">
+    <div class="screen-inner">
+      <p class="eyebrow center-text">Things That Remind Me Of You 🌸</p>
+      <div class="reminder-grid">
+        <div class="card reminder-card reveal-up tape-tl">
+          <p class="reminder-icon">🍜</p>
+          <h3 class="reminder-title script-text">Maggi</h3>
+          <p class="reminder-text">Ane ha…<br>Maggi vagar nu starter pack complete nathi thatu. 😭😂</p>
+        </div>
+        <div class="card reminder-card reveal-up delay-1 tape-tl">
+          <p class="reminder-icon">🍨</p>
+          <h3 class="reminder-title script-text">Homemade Ice Cream</h3>
+          <p class="reminder-text">Ketlak loko dessert kharide che.<br>Ketlak loko dessert banave che.<br>Taro homemade ice cream section deserve kare che. 😌✨</p>
+        </div>
+        <div class="card reminder-card reveal-up delay-2 tape-tl">
+          <p class="reminder-icon">🤍</p>
+          <h3 class="reminder-title script-text">Comfort Zone</h3>
+          <p class="reminder-text">Ketlak loko sathe vaat kari ne andar thi shanti male che.<br>Smile aavi jay che. Mood saro thai jay che.<br>Mara mate… tu evi vyakti che. 😊✨</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 10 — GUJARATI PLAYFUL -->
+  <section class="screen paper-bg" id="s10" data-chapter="10" data-label="People">
+    <div class="screen-inner center">
+      <div class="card people-card reveal-up">
+        <p class="people-line">Tamne joya pachi ek vaat samjayi…</p>
+        <p class="people-line">Ketlak loko sundar hoy che.</p>
+        <p class="people-line">Ketlak loko cute hoy che.</p>
+        <p class="people-line">Ane ketlak loko…</p>
+        <p class="people-final script-text">Labdhi hoy che. 😌✨</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 11 — BREAKING NEWS -->
+  <section class="screen paper-bg" id="s11" data-chapter="11" data-label="News">
+    <div class="screen-inner center">
+      <div class="card news-card reveal-up">
+        <p class="eyebrow typewriter-font">📰 breaking news</p>
+        <h3 class="news-heading">Local birthday girl spotted.</h3>
+        <p class="news-sub typewriter-font">witnesses claim:</p>
+        <p class="news-quote">"Etli saras lage che ke Google Maps pan reroute thai gayu." 😭😂</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 12 — SECRET MESSAGE -->
+  <section class="screen paper-bg" id="s12" data-chapter="12" data-label="The Letter">
+    <div class="screen-inner center">
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="letter">
+          <p class="letter-greeting script-text">Dear Madam Ji,</p>
+          <p>Aaje no divas tara mate che.</p>
+          <p>Etle aaje na koi mota paragraph.<br>Na koi lecture.<br>Na koi emotional drama.</p>
+          <p class="letter-bold">Bas thank you.</p>
+          <p>For the conversations.<br>For the laughs.<br>For the memories.</p>
+          <p class="letter-bold">And for being one of my favourite people... and one of my favourite comfort zones. 😊</p>
+          <p>Ane hu kharekhar asha rakhu chu ke…<br>Tara badha goals pura thay.</p>
+          <p>Je sapna mate tu mehnat kari rahi che…<br>Je vaat tu badha ne nathi kehti…<br>E pan ek divas puri thay. ✨</p>
+        </div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-front"></div>
+        <div class="envelope-seal" id="envelope-seal">L</div>
+      </div>
+      <p class="envelope-hint" id="envelope-hint">tap to open</p>
+    </div>
+  </section>
+
+  <!-- FINAL SCREEN -->
+  <section class="screen paper-bg" id="s13" data-chapter="13" data-label="Finale">
+    <div class="screen-inner center">
+      <div class="card final-card reveal-up">
+        <p class="final-q script-text">Ek nani vaat kahu?</p>
+        <p class="final-line">Darek divas special nathi hoto.</p>
+        <p class="final-line">Pan ketlak loko hoy che<br>je ordinary divas ne pan special banavi de.</p>
+        <p class="final-line">Mara mate…</p>
+        <p class="final-emph script-text">tu eva loko ma thi ek che. 😊</p>
+        <h2 class="final-title">Happy Birthday Madam Ji 🎂❤️</h2>
+        <p class="final-sign">Ane ha… Khush rehje. 😊✨</p>
+        <p class="final-tiny">Bas etlu j.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
