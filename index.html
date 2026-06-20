@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&family=Special+Elite&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -91,7 +91,7 @@
 
   <!-- SCREEN 4 — HERO (photo as background) -->
   <section class="screen hero-screen" id="s4" data-chapter="4" data-label="Hero">
-    <div class="hero-bg" style="background-image:url('{{ url_for('static', filename='images/photo1.jpg') }}')"></div>
+    <div class="hero-bg" style="background-image:url('images/photo1.jpg')"></div>
     <div class="hero-overlay"></div>
     <div class="screen-inner center hero-content">
       <h1 class="hero-title reveal-up">Happy Birthday<br><span class="script-text">Madam Ji</span> 🎂✨</h1>
@@ -108,7 +108,7 @@
     <div class="screen-inner center">
       <p class="eyebrow">Exhibit A 📸</p>
       <div class="polaroid rotate-left reveal-up">
-        <img src="{{ url_for('static', filename='images/photo1.jpg') }}" alt="Exhibit A">
+        <img src="images/photo1.jpg" alt="Exhibit A">
         <p class="polaroid-caption">this one's a problem 😌</p>
       </div>
       <p class="exhibit-text reveal-up delay-1">Tari aakh no afini…<br>Tara roop ni bandhani…<br>Manda lidha mohida gori tame… 😌✨</p>
@@ -121,7 +121,7 @@
     <div class="screen-inner center">
       <p class="eyebrow">Exhibit B 📸</p>
       <div class="polaroid rotate-right reveal-up">
-        <img src="{{ url_for('static', filename='images/photo2.jpg') }}" alt="Exhibit B">
+        <img src="images/photo2.jpg" alt="Exhibit B">
         <p class="polaroid-caption">also a problem 😭</p>
       </div>
       <p class="exhibit-text reveal-up delay-1">Swarg mathi utareli apsara pan tane joi ne kahe…<br><em>"Bas behen, have ketlu perfect dekhavanu?"</em> 😭😂</p>
@@ -255,6 +255,6 @@
 
 </main>
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="script.js"></script>
 </body>
 </html>
